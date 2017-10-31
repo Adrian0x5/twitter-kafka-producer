@@ -2,20 +2,20 @@ package com.example.twitter.config;
 
 
 import com.example.twitter.kafka.StreamListenerKafka;
-import com.example.twitter.kafka.TwitterKafkaProducer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.kafka.clients.producer.Producer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.social.twitter.api.Twitter;
 import org.springframework.social.twitter.api.impl.TwitterTemplate;
 
 @Configuration
 @Import(KafkaConfig.class)
+@ComponentScan("com.example.twitter.kafka")
 public class TwitterConfig {
 
     @Autowired
@@ -52,14 +52,6 @@ public class TwitterConfig {
         streamListenerKafka.setCreatedTweetsTopic(createTopic);
         streamListenerKafka.setDeleteEventTopic(deleteEventTopic);
         return streamListenerKafka;
-    }
-
-    @Bean
-    public TwitterKafkaProducer kafkaProducer() {
-        TwitterKafkaProducer twitterKafkaProducer = new TwitterKafkaProducer();
-        twitterKafkaProducer.setTwitter(twitter());
-        twitterKafkaProducer.setStreamListener(streamListener());
-        return twitterKafkaProducer;
     }
 
     @Bean

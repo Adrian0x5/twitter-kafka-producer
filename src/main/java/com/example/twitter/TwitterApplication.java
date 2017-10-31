@@ -10,7 +10,7 @@ public class TwitterApplication {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(TwitterApplication.class, args);
-		TwitterKafkaProducer producer = (TwitterKafkaProducer) context.getBean("kafkaProducer");
+		TwitterKafkaProducer producer = context.getBean(TwitterKafkaProducer.class);
 		producer.startStream();
 
 	}

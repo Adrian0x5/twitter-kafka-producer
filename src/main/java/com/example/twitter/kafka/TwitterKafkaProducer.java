@@ -5,10 +5,12 @@ import org.springframework.social.twitter.api.FilterStreamParameters;
 import org.springframework.social.twitter.api.Tweet;
 import org.springframework.social.twitter.api.Twitter;
 import org.springframework.social.twitter.api.UserStreamParameters;
+import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
 
+@Component
 public class TwitterKafkaProducer {
 
     private Twitter twitter;
