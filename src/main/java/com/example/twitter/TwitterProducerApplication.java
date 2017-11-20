@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
-public class TwitterApplication {
+public class TwitterProducerApplication {
 
 	public static void main(String[] args) {
-		ConfigurableApplicationContext context = SpringApplication.run(TwitterApplication.class, args);
+		ConfigurableApplicationContext context = SpringApplication.run(TwitterProducerApplication.class, args);
 		TwitterKafkaProducer producer = context.getBean(TwitterKafkaProducer.class);
 		producer.startStream();
 
