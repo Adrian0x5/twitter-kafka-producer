@@ -11,12 +11,11 @@ import org.springframework.social.twitter.api.StreamDeleteEvent;
 import org.springframework.social.twitter.api.StreamListener;
 import org.springframework.social.twitter.api.StreamWarningEvent;
 import org.springframework.social.twitter.api.Tweet;
-import org.springframework.stereotype.Component;
 
 
-public class StreamListenerKafka implements StreamListener {
+public class KafkaStreamListener implements StreamListener {
 
-    private static final Logger logger = LoggerFactory.getLogger(StreamListenerKafka.class);
+    private static final Logger logger = LoggerFactory.getLogger(KafkaStreamListener.class);
 
     private Producer producer;
 

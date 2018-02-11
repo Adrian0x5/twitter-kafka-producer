@@ -1,6 +1,6 @@
 package com.example.twitter.config;
 
-import com.example.twitter.kafka.StreamListenerKafka;
+import com.example.twitter.kafka.KafkaStreamListener;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.kafka.clients.producer.Producer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,13 +46,13 @@ public class TwitterConfig {
     }
 
     @Bean
-    public StreamListenerKafka streamListener() {
-        StreamListenerKafka streamListenerKafka = new StreamListenerKafka();
-        streamListenerKafka.setProducer(producer);
-        streamListenerKafka.setObjectMapper(objectMapper());
-        streamListenerKafka.setCreatedTweetsTopic(createTopic);
-        streamListenerKafka.setDeleteEventTopic(deleteEventTopic);
-        return streamListenerKafka;
+    public KafkaStreamListener streamListener() {
+        KafkaStreamListener kafkaStreamListener = new KafkaStreamListener();
+        kafkaStreamListener.setProducer(producer);
+        kafkaStreamListener.setObjectMapper(objectMapper());
+        kafkaStreamListener.setCreatedTweetsTopic(createTopic);
+        kafkaStreamListener.setDeleteEventTopic(deleteEventTopic);
+        return kafkaStreamListener;
     }
 
     @Bean

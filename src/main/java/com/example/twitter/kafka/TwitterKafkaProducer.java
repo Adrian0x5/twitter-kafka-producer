@@ -1,24 +1,20 @@
 package com.example.twitter.kafka;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.social.twitter.api.FilterStreamParameters;
-import org.springframework.social.twitter.api.Tweet;
 import org.springframework.social.twitter.api.Twitter;
-import org.springframework.social.twitter.api.UserStreamParameters;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.Collections;
 
 @Component
 public class TwitterKafkaProducer {
 
     private Twitter twitter;
 
-    private StreamListenerKafka streamListener;
+    private KafkaStreamListener streamListener;
 
     public void startStream() {
-        twitter.streamingOperations().user(Arrays.asList(streamListener));
+        twitter.streamingOperations().user(Collections.singletonList(streamListener));
     }
 
     @Autowired
@@ -27,7 +23,7 @@ public class TwitterKafkaProducer {
     }
 
     @Autowired
-    public void setStreamListener(StreamListenerKafka streamListener) {
+    public void setStreamListener(KafkaStreamListener streamListener) {
         this.streamListener = streamListener;
     }
 }
